@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*"},
+@CrossOrigin(origins = {"*"},
 public class ClienteController {
 
     @Configuration
@@ -21,7 +21,7 @@ public class ClienteController {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
      registry.addMapping("/**")
-             .allowedOrigins("http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*")
+             .allowedOrigins("*")
      .allowedMethods("GET", "POST", "PUT", "DELETE") // Permitir os métodos HTTP especificados
      .allowedHeaders("*"); // Permitir todos os cabeçalhos
       }
