@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/servico")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100"})
+@CrossOrigin(origins = {"*"})
 public class ServicoController {
 
     private final FuncionarioRepository funcionarioRepository;
