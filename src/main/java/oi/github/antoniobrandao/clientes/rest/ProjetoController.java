@@ -19,7 +19,7 @@ import java.time.format.DateTimeParseException;
 
 @RestController
 @RequestMapping("/api/projeto")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*"})
 public class ProjetoController {
 
     private final ProjetoRepository projetoRepository;
