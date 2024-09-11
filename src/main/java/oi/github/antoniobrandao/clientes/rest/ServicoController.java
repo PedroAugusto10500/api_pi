@@ -13,10 +13,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/servico")
-@CrossOrigin(origins = {"*"})
-@RequiredArgsConstructor
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*"})
 public class ServicoController {
 
     private final FuncionarioRepository funcionarioRepository;
