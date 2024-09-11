@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/funcionarios")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*"})
+@CrossOrigin(origins = {"*"})
 public class FuncionarioController {
 
     @Configuration
@@ -30,7 +30,7 @@ public class FuncionarioController {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
-                    .allowedOrigins("http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*")// Permitir solicitações apenas de http://localhost:4200
+                    .allowedOrigins("*")// Permitir solicitações apenas de http://localhost:4200
                     .allowedMethods("GET", "POST", "PUT", "DELETE") // Permitir os métodos HTTP especificados
                     .allowedHeaders("*"); // Permitir todos os cabeçalhos
         }
