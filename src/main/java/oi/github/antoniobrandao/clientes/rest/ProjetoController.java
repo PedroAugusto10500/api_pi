@@ -19,7 +19,7 @@ import java.time.format.DateTimeParseException;
 
 @RestController
 @RequestMapping("/api/projeto")
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = "*")
 public class ProjetoController {
 
     private final ProjetoRepository projetoRepository;
