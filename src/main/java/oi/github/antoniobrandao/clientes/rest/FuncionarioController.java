@@ -25,16 +25,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class FuncionarioController {
 
-    @Configuration
-    public class CorsConfig implements WebMvcConfigurer {
-        @Override
-        public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/**")
-                    .allowedOrigins("*")// Permitir solicitações apenas de http://localhost:4200
-                    .allowedMethods("GET", "POST", "PUT", "DELETE") // Permitir os métodos HTTP especificados
-                    .allowedHeaders("*"); // Permitir todos os cabeçalhos
-        }
-    }
 
     private final FuncionarioRepository repository;
 

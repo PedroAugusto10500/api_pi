@@ -7,12 +7,14 @@ import oi.github.antoniobrandao.clientes.model.repository.FuncionarioRepository;
 import oi.github.antoniobrandao.clientes.model.repository.ServicoRepository;
 import oi.github.antoniobrandao.clientes.rest.dto.FuncionarioDTO;
 import oi.github.antoniobrandao.clientes.rest.dto.ServicoDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/servico")
@@ -22,6 +24,11 @@ public class ServicoController {
     private final FuncionarioRepository funcionarioRepository;
     private final ServicoRepository repository;
 
+    @Autowired
+    public ServicoController(ServicoRepository repository, FuncionarioRepository funcionarioRepository) {
+        this.repository = repository;
+        this.funcionarioRepository = funcionarioRepository;
+    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ServicoDTO salvar(@RequestBody ServicoDTO dto) {
@@ -208,3 +215,4 @@ public class ServicoController {
                 .collect(Collectors.toList());
     }
 }
+

@@ -13,27 +13,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*") // Permitir todas as origens
 public class ClienteController {
 
-    @Configuration
-    public class CorsConfig implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-     registry.addMapping("/**")
-             .allowedOrigins("*")
-     .allowedMethods("GET", "POST", "PUT", "DELETE") // Permitir os métodos HTTP especificados
-     .allowedHeaders("*"); // Permitir todos os cabeçalhos
-      }
-    }
     private final ClienteRepository repository;
-    
+
     @Autowired
     public ClienteController(ClienteRepository repository){
         this.repository = repository;
     }
 
-    @GetMapping   // ADICIONEI ESSE MÉTODO -----------------
+    @GetMapping
     public List<Cliente> obterTodos(){
         return repository.findAll();
     }
@@ -46,30 +36,31 @@ public class ClienteController {
         }
         return repository.save(cliente);
     }
+
     @GetMapping("/verificar-cpf/{cpf}")
     public boolean verificarCPFCadastrado(@PathVariable String cpf) {
         return repository.existsByCpf(cpf);
     }
+
     @GetMapping("{id}")
     public Cliente acharPorId(@PathVariable Integer id){
-        return repository.findById(id).orElseThrow( () ->  new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Integer id){
-
         repository.findById(id)
                 .map(cliente -> {
                     repository.delete(cliente);
                     return Void.TYPE;
                 })
-                .orElseThrow( () ->  new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar (@PathVariable Integer id, @RequestBody Cliente clienteAtualizado){
+    public void atualizar(@PathVariable Integer id, @RequestBody Cliente clienteAtualizado){
         repository.findById(id)
                 .map(cliente -> {
                     cliente.setNome(clienteAtualizado.getNome());
@@ -79,6 +70,6 @@ public class ClienteController {
                     // Atualize outros atributos conforme necessário
                     return repository.save(cliente); // Salve o cliente existente com as atualizações
                 })
-                .orElseThrow( () ->  new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }
