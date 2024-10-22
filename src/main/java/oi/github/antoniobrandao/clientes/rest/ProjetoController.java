@@ -19,7 +19,7 @@ import java.time.format.DateTimeParseException;
 
 @RestController
 @RequestMapping("/api/projeto")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100","https://d194-186-215-67-187.ngrok-free.app", "https://apipi-production-befc.up.railway.app", "*"}, allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100","https://d194-186-215-67-187.ngrok-free.app", "https://apipi-production-9510.up.railway.app", "*"}, allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ProjetoController {
 
     private final ProjetoRepository projetoRepository;
