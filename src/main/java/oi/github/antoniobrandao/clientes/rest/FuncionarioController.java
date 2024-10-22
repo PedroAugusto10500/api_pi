@@ -22,8 +22,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/funcionarios")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app", "*"}, allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100", "https://apipi-production-befc.up.railway.app","https://d194-186-215-67-187.ngrok-free.app", "*"}, allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class FuncionarioController {
+
 
 
     private final FuncionarioRepository repository;
