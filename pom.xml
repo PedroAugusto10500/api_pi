@@ -11,6 +11,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+
+
+
 	<groupId>oi.github.antoniobrandao</groupId>
 	<artifactId>clientes</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -41,6 +44,12 @@
 			<version>${ngrok.version}</version>
 			<classifier>${os.detected.classifier}</classifier>
 			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.6.0</version>
 		</dependency>
 
 		<!-- Spring Data JPA -->
