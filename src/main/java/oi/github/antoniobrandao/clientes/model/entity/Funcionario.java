@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
-jakarta.validation.*
-jakarta.validation.constraints.*
+import jakarta.validation.*
+import jakarta.validation.constraints.*
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -64,3 +64,4 @@ public class Funcionario {
     }
 
 }
+
