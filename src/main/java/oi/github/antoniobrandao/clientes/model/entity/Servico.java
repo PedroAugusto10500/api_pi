@@ -32,10 +32,6 @@ public class Servico {
     @NotBlank(message = "O tipo de serviço é obrigatório")
     private String tipoServico;
 
-    @Column(precision = 10, scale = 2)
-    @DecimalMin(value = "0.0", inclusive = false, message = "O valor deve ser maior que zero")
-    @NotNull(message = "O valor é obrigatório")
-    private BigDecimal valor;
 
     @Column(nullable = false)
     @NotBlank(message = "A situação é obrigatória")
@@ -52,4 +48,5 @@ public class Servico {
     // Getters e setters
 
 }
+
 
