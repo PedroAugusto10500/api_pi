@@ -5,8 +5,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import jakarta.validation.*
-import jakarta.validation.constraints.*
+import jakarta.validation.*;
+import jakarta.validation.constraints.*;
 @Entity
 @Data
 public class Servico {
@@ -52,3 +52,4 @@ public class Servico {
     // Getters e setters
 
 }
+
