@@ -1,14 +1,12 @@
 package oi.github.antoniobrandao.clientes.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
-
-import jakarta.validation.*
-import jakarta.validation.constraints.*
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
+
 
 @Entity
 @Data
