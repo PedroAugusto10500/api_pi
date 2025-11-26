@@ -2,10 +2,11 @@ package oi.github.antoniobrandao.clientes.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import jakarta.validation.*
+import jakarta.validation.constraints.*
 @Entity
 @Data
 public class Servico {
@@ -49,4 +50,5 @@ public class Servico {
     private List<Funcionario> funcionarios;
 
     // Getters e setters
+
 }
