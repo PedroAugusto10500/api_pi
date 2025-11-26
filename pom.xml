@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -17,12 +18,12 @@
     <name>clientes</name>
     <description>Demo project for Spring Boot</description>
 
-<properties>
-    <java.version>17</java.version>
-    <ngrok.version>0.5.0</ngrok.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-</properties>
+    <properties>
+        <java.version>17</java.version>
+        <ngrok.version>0.5.0</ngrok.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <dependencies>
 
@@ -66,12 +67,13 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Validation -->
+        <!-- Validation (Jakarta) -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
 
+        <!-- Validator -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -88,8 +90,15 @@
 
     <build>
 
+        <!-- 🔥 FIX: impedir Maven de fazer filtering no properties -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
         <extensions>
-            <!-- Detect OS -->
             <extension>
                 <groupId>kr.motd.maven</groupId>
                 <artifactId>os-maven-plugin</artifactId>
@@ -99,7 +108,7 @@
 
         <plugins>
 
-            <!-- REQUIRED FOR DOCKER (fix Railway build) -->
+            <!-- Necessário pro Railway não travar nas dependências -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
