@@ -1,115 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.2</version>
+    <modelVersion>4.0.0</modelVersion>
 
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <!-- Spring Boot parent -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.2</version>
+        <relativePath/>
+    </parent>
 
+    <groupId>oi.github.antoniobrandao</groupId>
+    <artifactId>clientes</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>clientes</name>
+    <description>Demo project for Spring Boot</description>
 
+    <properties>
+        <java.version>17</java.version>
+        <ngrok.version>0.5.0</ngrok.version>
+    </properties>
 
+    <!-- Dependencies -->
+    <dependencies>
 
-	<groupId>oi.github.antoniobrandao</groupId>
-	<artifactId>clientes</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>clientes</name>
-	<description>Demo project for Spring Boot</description>
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-	<properties>
-		<ngrok.version>0.5.0</ngrok.version>
-		<java.version>17</java.version>
+        <!-- JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-	</properties>
+        <!-- H2 Database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
-	<dependencies>
-		<!-- Spring Boot Web -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+        <!-- Ngrok -->
+        <dependency>
+            <groupId>com.ngrok</groupId>
+            <artifactId>ngrok-java</artifactId>
+            <version>${ngrok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ngrok</groupId>
+            <artifactId>ngrok-java-native</artifactId>
+            <version>${ngrok.version}</version>
+            <classifier>${os.detected.classifier}</classifier>
+            <scope>runtime</scope>
+        </dependency>
 
-		<!-- Ngrok Dependencies -->
-		<dependency>
-			<groupId>com.ngrok</groupId>
-			<artifactId>ngrok-java</artifactId>
-			<version>${ngrok.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ngrok</groupId>
-			<artifactId>ngrok-java-native</artifactId>
-			<version>${ngrok.version}</version>
-			<classifier>${os.detected.classifier}</classifier>
-			<scope>runtime</scope>
-		</dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
+        <!-- Validation -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.1.Final</version>
+        </dependency>
 
-		<!-- Spring Data JPA -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- H2 Database -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+    </dependencies>
 
-		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
+    <!-- Build -->
+    <build>
+        <extensions>
+            <!-- Detect OS (ngrok native) -->
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.7.0</version>
+            </extension>
+        </extensions>
 
-		<!-- Validation API -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
-		</dependency>
+        <plugins>
 
-		<!-- Hibernate Validator -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>8.0.1.Final</version>
-		</dependency>
+            <!-- Spring Boot -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-		<!-- Test Dependencies -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+            <!-- Maven Dependency Plugin (necessário para Railway) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.1</version>
+            </plugin>
 
-	<build>
-		<extensions>
-			<!-- Plugin to detect OS -->
-			<extension>
-				<groupId>kr.motd.maven</groupId>
-				<artifactId>os-maven-plugin</artifactId>
-				<version>1.7.0</version>
-			</extension>
-		</extensions>
+        </plugins>
+    </build>
 
-		<plugins>
+    <!-- Railway requires this if -Pproduction is used -->
+    <profiles>
+        <profile>
+            <id>production</id>
+        </profile>
+    </profiles>
 
-
-			<!-- Spring Boot Maven Plugin -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>
