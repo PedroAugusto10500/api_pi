@@ -2,7 +2,8 @@ package oi.github.antoniobrandao.clientes.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+import jakarta.validation.*
+import jakarta.validation.constraints.*
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -55,4 +56,5 @@ public class Projeto {
             inverseJoinColumns = @JoinColumn(name = "cliente_id")
     )
     private List<Cliente> clientes;
+
 }
