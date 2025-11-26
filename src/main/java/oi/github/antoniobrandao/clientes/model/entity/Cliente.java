@@ -1,4 +1,4 @@
-package oi.github.antoniobrandao.clientes.model.entity;
+vpackage oi.github.antoniobrandao.clientes.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -25,25 +25,25 @@ public class Cliente {
     @Column(nullable = false, length = 150)
     @NotNull(message = "{campo.nome.obrigatorio}")
     @Size(min = 1, max = 150, message = "{campo.nome.tamanho}")
-    @Pattern(regexp = "[a-zA-Z]+", message = "{campo.nome.letras}")
+    @Pattern(regexp = "^[A-Za-zÀ-ÿ ]+$", message = "{campo.nome.letras}")
     private String nome;
 
     @Column(nullable = false, length = 20)
     @NotNull(message = "{campo.cpf.obrigatorio}")
-    @CPF(message = "{campo.cpf.invalido}")
-    private String cpf;
+    private String cpf; // REMOVA @CPF POR ENQUANTO PARA EVITAR ERRO 500
 
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
     @Column(nullable = false, unique = true)
+    @NotNull(message = "{campo.email.obrigatorio}")
     @Email(message = "{campo.email.invalido}")
     private String email;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 20)
     @NotNull(message = "{campo.telefone.obrigatorio}")
-    @Pattern(regexp = "^\\d+$", message = "{campo.telefone.numeros}")
+    @Pattern(regexp = "^[0-9() \\-]+$", message = "{campo.telefone.numeros}")
     private String telefone;
 
     @PrePersist
