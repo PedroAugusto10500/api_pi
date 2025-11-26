@@ -2,8 +2,8 @@ package oi.github.antoniobrandao.clientes.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import jakarta.validation.*
-import jakarta.validation.constraints.*
+import jakarta.validation.*;
+import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -57,4 +57,5 @@ public class Projeto {
     private List<Cliente> clientes;
 
 }
+
 
