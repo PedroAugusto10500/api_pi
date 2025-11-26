@@ -1,28 +1,22 @@
 package oi.github.antoniobrandao.clientes.model.entity;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.br.CPF;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import javax.validation.constraints.Size;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class Cliente {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,12 +33,11 @@ public class Cliente {
     @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
 
-
-    @Column(name = "data_cadastro" , updatable = false)
+    @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
-    @Column(nullable = false, unique = true) // Supondo que o email seja único
+    @Column(nullable = false, unique = true)
     @Email(message = "{campo.email.invalido}")
     private String email;
 
@@ -53,11 +46,8 @@ public class Cliente {
     @Pattern(regexp = "^\\d+$", message = "{campo.telefone.numeros}")
     private String telefone;
 
-
-
     @PrePersist
-    public void prePersist(){
+    public void prePersist() {
         setDataCadastro(LocalDate.now());
     }
-
 }
