@@ -1,4 +1,4 @@
-vpackage oi.github.antoniobrandao.clientes.model.entity;
+package oi.github.antoniobrandao.clientes.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -51,3 +51,4 @@ public class Cliente {
         setDataCadastro(LocalDate.now());
     }
 }
+
